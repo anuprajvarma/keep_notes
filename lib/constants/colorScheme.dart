@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-class ColorScheme{
-    static Color dark= Color(0xff54436B);
-    static Color green3= Color(0xff50CB93);
-    static Color green2= Color(0xff71EFA3);
-    static Color green1= Color(0xffACFFAD);
+class AppColorScheme {
+  static Color dark = Color(0xff000000);
+  static Color grey3 = Color(0xff5a5a5a);
+  static Color grey2 = Color(0xff202020);
+  static Color grey1 = Color(0xff838383);
+  static Color yellow = Color(0xffdca011);
 }
