@@ -1,39 +1,46 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:keep_notes/components/enums.dart';
 import 'package:keep_notes/constants/colorScheme.dart';
 
 class MyTextField extends StatelessWidget {
   String hintString;
+  int? maxline;
+  NoteInputType type;
+  var onchange;
 
-  MyTextField({this.hintString = ''});
+  MyTextField(
+      {this.hintString = '',
+      this.maxline = 1,
+      this.type = NoteInputType.Note,
+      this.onchange});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.0),
-          color: AppColorScheme.grey3,
-        ),
+        color: AppColorScheme.dark,
         child: TextField(
+          onChanged: onchange,
           cursorHeight: 25,
-          maxLines: 1,
+          maxLines: maxline,
           decoration: InputDecoration(
               border: InputBorder.none,
               hintText: hintString,
               hintStyle: TextStyle(
                   color: AppColorScheme.grey1,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25),
-              prefixIcon: Icon(
-                FontAwesomeIcons.search,
-                color: AppColorScheme.grey1,
-              ),
+                  fontWeight:
+                      type == NoteInputType.Title ? FontWeight.bold : null,
+                  fontSize: type == NoteInputType.Title ? 25 : 20),
               counterStyle: TextStyle(
                 color: Colors.white,
               )),
-          style: TextStyle(color: Colors.white, fontSize: 25),
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: type == NoteInputType.Title ? 25 : 20,
+            fontWeight: type == NoteInputType.Title ? FontWeight.bold : null,
+          ),
         ),
       ),
     );

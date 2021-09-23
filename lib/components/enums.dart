@@ -1,0 +1,1 @@
+enum NoteInputType { Title, Note }
