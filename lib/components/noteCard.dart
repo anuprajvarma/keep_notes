@@ -4,11 +4,13 @@ import 'package:keep_notes/constants/colorScheme.dart';
 class NoteCard extends StatelessWidget {
   String title;
   String note;
+  int index;
 
   NoteCard(
       {this.note =
           'My note.kjadfgegfilasfnfvkjasklvbliaslkljdafvbadfi;vjlksfbvjliulfvjhafsbvkjlb',
-      this.title = 'Note title'});
+      this.title = 'Note title',
+      this.index = 1});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +21,15 @@ class NoteCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Text(
+            '$index.',
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(color: Colors.white, fontSize: 15),
+          ),
+          SizedBox(
+            height: 5,
+          ),
           Text(
             title,
             maxLines: 1,

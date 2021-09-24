@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:keep_notes/components/deleteDialog.dart';
 import 'package:keep_notes/components/noteCard.dart';
 import 'package:keep_notes/constants/colorScheme.dart';
 import 'package:keep_notes/firebase_layer/getNotes.dart';
@@ -21,6 +22,7 @@ class _HomeState extends State<Home> {
       noteCards.add(NoteCard(
         title: notes[i]['title'],
         note: notes[i]['note'],
+        index: i + 1,
       ));
     }
   }
@@ -50,6 +52,26 @@ class _HomeState extends State<Home> {
             )
           ],
         ),
+        actions: [
+          GestureDetector(
+            onTap: () async {
+              await showDialog(
+                  context: context,
+                  builder: (ctx) {
+                    return DeleteDialog();
+                  });
+
+              setState(() {});
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: FaIcon(
+                FontAwesomeIcons.trash,
+                color: Colors.white,
+              ),
+            ),
+          )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
